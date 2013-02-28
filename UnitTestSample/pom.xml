@@ -170,7 +170,7 @@
                     </formats>
                     <instrumentation>
                         <ignores>
-                        	<ignore>info.beverlyshill.unittestsample.HomeController.class</ignore>
+                        	<ignore>info/beverlyshill/unittestsample/HomeController.class</ignore>
                         </ignores>
                     </instrumentation>
                 </configuration>
