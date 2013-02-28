@@ -167,9 +167,11 @@
                     <formats>
                         <format>xml</format>
                         <format>html</format>
-                        <ignores>
-                        <ignore>info.beverlyshill.unittestsample.HomeController.class</ignore>
-                        </ignores>
+                        <instrumentation>
+                        	<ignores>
+                        		<ignore>info.beverlyshill.unittestsample.HomeController.class</ignore>
+                        	</ignores>
+                        </instrumentation>
                     </formats>
                 </configuration>
             </plugin>
