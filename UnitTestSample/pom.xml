@@ -162,17 +162,17 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.4</version>
+                <version>2.5.2</version>
                 <configuration>
                     <formats>
                         <format>xml</format>
                         <format>html</format>
-                        <instrumentation>
-                        	<ignores>
-                        		<ignore>info.beverlyshill.unittestsample.HomeController.class</ignore>
-                        	</ignores>
-                        </instrumentation>
                     </formats>
+                    <instrumentation>
+                        <ignores>
+                        	<ignore>info.beverlyshill.unittestsample.HomeController.class</ignore>
+                        </ignores>
+                    </instrumentation>
                 </configuration>
             </plugin>
         </plugins>
