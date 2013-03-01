@@ -168,11 +168,6 @@
                         <format>xml</format>
                         <format>html</format>
                     </formats>
-                    <instrumentation>
-                        <ignores>
-                        	<ignore>info/beverlyshill/unittestsample/HomeController.class</ignore>
-                        </ignores>
-                    </instrumentation>
                 </configuration>
             </plugin>
         </plugins>
