@@ -9,8 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 /**
+ * Service that manages scribing and notifying clients
+ * 
  * @author bhill2
- *
  */
 @Component
 public class NotificationService implements Message, Client {

@@ -31,18 +31,11 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-		//ctx.load("classpath:datasource.xml");
 		ctx.refresh();
-		// get the RaceResultsService
-		client = ctx.getBean("client", Client.class);
-		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		Client clientName = client.getClientName();
 		String formattedDate = dateFormat.format(date);
-		
 		model.addAttribute("serverTime", formattedDate );
-		model.addAttribute("clientName", clientName);
 		
 		return "home";
 	}

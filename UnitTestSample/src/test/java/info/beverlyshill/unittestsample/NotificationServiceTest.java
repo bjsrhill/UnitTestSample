@@ -3,7 +3,7 @@
  */
 package info.beverlyshill.unittestsample;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -13,46 +13,44 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 /**
+ * Test class for NotificationService
  * @author bhill2
- *
  */
 public class NotificationServiceTest {
 
 	/**
-	 * @throws java.lang.Exception
+	 * Test for addSubscriber
+	 * Tests that the method 
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
-	public final void subscribedClientShouldReceiveMessage() {
-		NotificationService raceResults = new NotificationService();
+	public final void addedSubscriberSetsClient() {
+		//SUT
+		NotificationService notificationService = new NotificationService();
+		//Client mock
 		Client client = Mockito.mock(Client.class);
+		//invoke test method
+		notificationService.addSubscriber(client);
+		//assert that test method sets client name
+		assertNotNull("", notificationService.getClientName());
+	}
+	
+	/**
+	 * Test for send
+	 * Tests that the method invokes client.receive(message)
+	 */
+	@Test
+	public final void sendShouldSubscribedClientShouldReceiveMessage() {
+		//SUT
+		NotificationService notificationService = new NotificationService();
+		//Client mock
+		Client client = Mockito.mock(Client.class);
+		//Message mock
 		Message message = Mockito.mock(Message.class);
-		raceResults.addSubscriber(client);
-		raceResults.send(message);
+		//invoke method addSubscriber to set Client
+		notificationService.addSubscriber(client);
+		//invoke method to test
+		notificationService.send(message);
+		//verify that subscribed client receives message
 		Mockito.verify(client).receive(message);
 	}
 
