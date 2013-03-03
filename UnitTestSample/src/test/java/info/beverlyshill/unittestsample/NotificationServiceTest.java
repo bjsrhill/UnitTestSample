@@ -18,6 +18,8 @@ import org.mockito.Mockito;
  * Test that clients are allowed to subscribe to start receiving messages
  * Test that subscribers allow to be unsubscribed to stop receiving messages
  * Test that every time a new message comes it should be sent to all subscribers
+ * Test that only subscribers receive messages
+ * Test that a client cannot be subscribed more than once
  * @author bhill2
  */
 public class NotificationServiceTest {
@@ -84,4 +86,30 @@ public class NotificationServiceTest {
 		Mockito.verify(firstSubscriber).receive(message);
 		Mockito.verify(secondSubscriber).receive(message);
 	}
+	
+	/**
+	 * Test that clients not subscribed to not 
+	 * receive messages
+	 */
+	@Test
+	public void notSubscribedClientDoesNotReceiveMessage() {
+		notificationService.send(message);
+		Mockito.verify(client, Mockito.never()).receive(message);
+	}
+	
+	/**
+	 * Test that clients cannot be subscribed more
+	 * than once
+	 */
+	@Test
+	public void clientCannotSubscribeMoreThanOnce() {
+		int numberTimesSubscribed = 2;
+		for(int i = 0; i < numberTimesSubscribed; i++) {
+			notificationService.addSubscriber(client);
+		}
+		notificationService.send(message);
+		Mockito.verify(client).receive(message);
+	}
 }
+	
+	
