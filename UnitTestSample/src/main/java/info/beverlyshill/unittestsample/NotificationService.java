@@ -34,10 +34,6 @@ public class NotificationService {
 		}
 	}
 	
-	public void setClientName(Client client) {
-		client.setClientName(client);
-	}
-	
 	public Client getClientName() {
 		return this.client;
 	}
