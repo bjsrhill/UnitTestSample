@@ -3,8 +3,8 @@
  */
 package info.beverlyshill.unittestsample;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.springframework.stereotype.Component;
 
@@ -20,7 +20,7 @@ public class NotificationService {
 	
 	private Client client;
 	
-	private Collection<Client> allClients = new ArrayList<Client>();
+	private Collection<Client> allClients = new HashSet<Client>();
 
 	public void addSubscriber(Client client) {
 		allClients.add(client);
