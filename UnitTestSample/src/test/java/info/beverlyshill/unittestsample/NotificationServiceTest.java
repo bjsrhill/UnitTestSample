@@ -17,6 +17,17 @@ import org.mockito.Mockito;
  * @author bhill2
  */
 public class NotificationServiceTest {
+	//SUT
+	private NotificationService notificationService = new NotificationService();
+	
+	//Client
+	Client client = null;
+	
+	@Before
+	public void setUp() throws Exception {
+		//Client mock
+		client = Mockito.mock(Client.class);
+	}
 
 	/**
 	 * Test for addSubscriber
@@ -24,14 +35,10 @@ public class NotificationServiceTest {
 	 */
 	@Test
 	public final void addedSubscriberSetsClient() {
-		//SUT
-		NotificationService notificationService = new NotificationService();
-		//Client mock
-		Client client = Mockito.mock(Client.class);
 		//invoke test method
 		notificationService.addSubscriber(client);
 		//assert that test method sets client name
-		assertNotNull("", notificationService.getClientName());
+		assertNotNull("The value is null and should not be null.", notificationService.getClientName());
 	}
 	
 	/**
@@ -40,10 +47,6 @@ public class NotificationServiceTest {
 	 */
 	@Test
 	public final void sendShouldSubscribedClientShouldReceiveMessage() {
-		//SUT
-		NotificationService notificationService = new NotificationService();
-		//Client mock
-		Client client = Mockito.mock(Client.class);
 		//Message mock
 		Message message = Mockito.mock(Message.class);
 		//invoke method addSubscriber to set Client
