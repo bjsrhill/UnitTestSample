@@ -22,19 +22,40 @@ public class NotificationService {
 	
 	private Collection<Client> allClients = new HashSet<Client>();
 
+	/**
+	 * Subscribes a client
+	 * @param client is a Client object
+	 */
 	public void addSubscriber(Client client) {
 		allClients.add(client);
 		this.client = client;
 		
 	}
 
+	/**
+	 * Sends a message to a client
+	 * @param message
+	 */
 	public void send(Message message) {
 		for(Client client : allClients) {
 			client.receive(message);
 		}
 	}
 	
+	/**
+	 * Returns a Client object
+	 * @return a Client object
+	 */
 	public Client getClientName() {
 		return this.client;
+	}
+
+	/**
+	 * Unsubscribes a Client
+	 * 
+	 * @param clientToRemove is a Client object
+	 */
+	public void removeSubscriber(Client clientToRemove) {
+		this.allClients.remove(clientToRemove);
 	}
 }
