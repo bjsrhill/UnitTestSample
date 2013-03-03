@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  * @author bhill2
  */
 @Component
-public class NotificationService implements Message, Client {
+public class NotificationService {
 	
 	private Client client;
 	
@@ -41,11 +41,4 @@ public class NotificationService implements Message, Client {
 	public Client getClientName() {
 		return this.client;
 	}
-
-	@Override
-	public void receive(Message message) {
-		client.receive(message);
-		
-	}
-
 }
