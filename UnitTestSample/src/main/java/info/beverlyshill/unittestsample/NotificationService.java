@@ -9,8 +9,8 @@ import java.util.HashSet;
 import org.springframework.stereotype.Component;
 
 /**
- * Service that manages scribing and notifying clients
- * Clients are allowed to subscribe to start receiving messages
+ * Service that manages scribing and notifying subscribers
+ * Subscribers are allowed to subscribe to start receiving messages
  * Subscribers allow to be unsubscribed to stop receiving messages
  * Every time a new message comes it should be sent to all subscribers
  * @author bhill2
@@ -18,44 +18,44 @@ import org.springframework.stereotype.Component;
 @Component
 public class NotificationService {
 	
-	private Client client;
+	private Subscriber subscriber;
 	
-	private Collection<Client> allClients = new HashSet<Client>();
+	private Collection<Subscriber> allSubscribers = new HashSet<Subscriber>();
 
 	/**
-	 * Subscribes a client
-	 * @param client is a Client object
+	 * Subscribes a subscriber
+	 * @param subscriber is a Subscriber object
 	 */
-	public void addSubscriber(Client client) {
-		allClients.add(client);
-		this.client = client;
+	public void addSubscriber(Subscriber subscriber) {
+		allSubscribers.add(subscriber);
+		this.subscriber = subscriber;
 		
 	}
 
 	/**
-	 * Sends a message to a client
+	 * Sends a message to a subscriber
 	 * @param message
 	 */
 	public void send(Message message) {
-		for(Client client : allClients) {
-			client.receive(message);
+		for(Subscriber subscriber : allSubscribers) {
+			subscriber.receive(message);
 		}
 	}
 	
 	/**
-	 * Returns a Client object
-	 * @return a Client object
+	 * Returns a Subscriber object
+	 * @return a Subscriber object
 	 */
-	public Client getClientName() {
-		return this.client;
+	public Subscriber getSubscriberName() {
+		return this.subscriber;
 	}
 
 	/**
-	 * Unsubscribes a Client
+	 * Unsubscribes a Subscriber
 	 * 
-	 * @param clientToRemove is a Client object
+	 * @param subscriberToRemove is a Subscriber object
 	 */
-	public void removeSubscriber(Client clientToRemove) {
-		this.allClients.remove(clientToRemove);
+	public void removeSubscriber(Subscriber subscriberToRemove) {
+		this.allSubscribers.remove(subscriberToRemove);
 	}
 }

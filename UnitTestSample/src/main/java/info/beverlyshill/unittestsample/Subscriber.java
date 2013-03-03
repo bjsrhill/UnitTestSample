@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-public interface Client {
+public interface Subscriber {
 
 	void receive(Message message);
-	void setClientName(Client client);
-	Client getClientName();
+	void setSubscriberName(Subscriber scriber);
+	Subscriber getSubscriberName();
 
 }

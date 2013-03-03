@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 	
 	@Autowired
-	private Client client;
+	private Subscriber subscriber;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -29,7 +29,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+		logger.info("Welcome home! The subscriber locale is {}.", locale);
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
 		ctx.refresh();
 		Date date = new Date();
