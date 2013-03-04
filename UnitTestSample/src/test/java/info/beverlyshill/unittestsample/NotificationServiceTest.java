@@ -22,6 +22,7 @@ import org.mockito.Mockito;
  * Test that only subscribers receive messages
  * Test that a subscriber cannot be subscribed more than once
  * Test that an unsubscribed subscriber does not continue receiving messages
+ * Test that a subscriber cannot be unsubscribed more than once
  * @author bhill2
  */
 public class NotificationServiceTest {
