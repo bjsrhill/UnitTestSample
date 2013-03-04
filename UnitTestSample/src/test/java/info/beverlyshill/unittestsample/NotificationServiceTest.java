@@ -3,6 +3,7 @@
  */
 package info.beverlyshill.unittestsample;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
@@ -122,6 +123,21 @@ public class NotificationServiceTest {
 		notificationService.removeSubscriber(subscriber);
 		notificationService.send(message);
 		Mockito.verify(subscriber, Mockito.never()).receive(message);
+	}
+	
+	/**
+	 * Test that unsubscribing a subscriber cannot be
+	 * done more than once
+	 */
+	@Test
+	public void unsubscribedSubscriberCanBeDoneOnlyOnce() {
+		int timesToRemove = 2;
+		boolean testRemove = true;
+		notificationService.addSubscriber(subscriber);
+		for(int i = 0; i < timesToRemove; i++) {
+			testRemove = notificationService.removeSubscriber(subscriber);
+		}
+		assertFalse("The value is true and should be false.", testRemove);
 	}
 }
 	

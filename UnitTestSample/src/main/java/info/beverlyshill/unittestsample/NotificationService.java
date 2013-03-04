@@ -54,8 +54,10 @@ public class NotificationService {
 	 * Unsubscribes a Subscriber
 	 * 
 	 * @param subscriberToRemove is a Subscriber object
+	 * @return true if the subscriber is unsubscribed and
+	 * false if the subscriber is not unsubscribed
 	 */
-	public void removeSubscriber(Subscriber subscriberToRemove) {
-		this.allSubscribers.remove(subscriberToRemove);
+	public boolean removeSubscriber(Subscriber subscriberToRemove) {
+		return this.allSubscribers.remove(subscriberToRemove);
 	}
 }
